@@ -8,7 +8,6 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-    stage 'checkout'
     node {
 	    stage('Build') { // <2>
 				echo "build success"
