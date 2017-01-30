@@ -6,8 +6,9 @@ def call(body) {
     body()
     stage 'checkout'
     node {
-	    stage('Build') { // <2>
-		echo "build success"
+	  checkout scm
+	  stage('Build') { // <2>
+	  echo "build success"
    	 }
     	stage('Test') {
      	 echo "test success"
