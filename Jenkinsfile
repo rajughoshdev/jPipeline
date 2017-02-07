@@ -3,7 +3,7 @@ node {
    stage 'Checkout'
 
    // Checkout code from repository
-  checkout([$class: 'GitSCM', branches: [[name:'$BRANCH_NAME']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: []) 
+   checkout([$class: 'GitSCM', branches: [[name:'$BRANCH_NAME']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId:, url:]]]) 
    // Get the maven tool.
    // ** NOTE: This 'M3' maven tool must be configured
    // **       in the global configuration.
