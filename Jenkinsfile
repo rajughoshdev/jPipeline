@@ -1,11 +1,4 @@
 
-def call(body) {
-    def config = [:]
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = config
-    body()
-
-    stage 'checkout'
 
     node {
 	  checkout scm
@@ -18,5 +11,3 @@ def call(body) {
     stage('Deploy') {
      	 echo "Deploy success"
    	 }
-   }
-}
