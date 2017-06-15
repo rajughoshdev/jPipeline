@@ -1,7 +1,4 @@
-
-
-    node {
-	  checkout scm
+   node {
 	  stage('Build') { // <2>
 	    echo "build success"
    	 }
