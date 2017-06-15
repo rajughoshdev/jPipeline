@@ -1,5 +1,7 @@
-node {
-      checkout scm 
-        /* .. snip .. */
-      standardBuild()
-  }
+#!/usr/bin/env groovy
+
+def welcome = "hello world" 
+      
+node{
+      echo "${welcome}"
+}
