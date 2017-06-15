@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    node {
+    checkout scm 
+    /* .. snip .. */
+    }
 
     stages {
         stage('Build') {
