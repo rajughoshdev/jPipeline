@@ -4,10 +4,11 @@ def call(body) {
     body.delegate = config
     body()
 
-    // This is where the magic happens - put your pipeline snippets in here, get variables from config.
     node {
-        git 'https://github.com/rajughoshdev/docker-compose-workshop.git'
-        sh 'cat Dockerfile'
-   
+	stage 'Checkout'
+	checkout scm
+	stage 'test'
+	sh 'cat test.txt'
     }
+
 }
