@@ -1,9 +1,6 @@
-node {
-	stage 'Checkout'
-	checkout scm
-	stage 'test'
-	sh 'cat test.txt'
 
+#!groovy
 
-
-}
+// Loads the standardBuild function/step from workflowLibs.git/vars/standardBuild.groovy
+// and invokes it.
+standardBuild { }
