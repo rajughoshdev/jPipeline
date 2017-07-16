@@ -1,14 +1,7 @@
-#!/usr/bin/env groovy
-def call(body) {
-    def config = [:]
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = config
-    body()
+node {
+	stage 'Checkout'
+		checkout scm
 
-    // This is where the magic happens - put your pipeline snippets in here, get variables from config.
-    node {
-        git 'https://github.com/rajughoshdev/docker-compose-workshop.git'
-        sh 'cat Dockerfile'
-   
-    }
+
+
 }
