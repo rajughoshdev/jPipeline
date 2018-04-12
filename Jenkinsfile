@@ -12,6 +12,7 @@ node {
 
    echo "hello world"
    echo "$JOB_NAME"
+   echo "$GIT_BRANCH"
    String []job = env.JOB_NAME.tokenize( '/'  )
    def branchName =job[1]
    //println "myjob = $JOB_NAME"
