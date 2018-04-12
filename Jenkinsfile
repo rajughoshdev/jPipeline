@@ -12,4 +12,12 @@ node {
 
    echo "hello world"
    echo "$JOB_NAME"
+
+   def (project, branchName) = ${env.JOB_NAME}.tokenize( '/'  )
+  if( branchName == "develop" || branchName == "master" || branchName=~/^[0-9]+.[0-9]+.[0-9]+-RC$/ ) {
+  // notify Slack
+		println "send to product"
+  }else{
+		println "send to product"
+  }
 }
