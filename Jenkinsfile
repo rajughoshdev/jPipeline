@@ -12,7 +12,7 @@ node {
 
    echo "hello world"
    echo "$JOB_NAME"
-   String []job = "$JOB_NAME".tokenize( '/'  )
+   String []job = env.JOB_NAME.tokenize( '/'  )
    def branchName =job[1]
    //println "myjob = $JOB_NAME"
    if( branchName == "develop" || branchName == "master" || branchName=~/^[0-9]+.[0-9]+.[0-9]+-RC$/ ) {
