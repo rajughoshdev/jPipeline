@@ -1,4 +1,5 @@
 node {
+   try {
    // Mark the code checkout 'stage'....
    stage 'Checkout'
 
@@ -12,13 +13,14 @@ node {
 
    echo "hello world"
    echo "$JOB_NAME"
-   String []job = env.JOB_NAME.tokenize( '/'  )
-   def branchName =job[1]
-   //println "myjob = $JOB_NAME"
-   if( branchName == "develop" || branchName == "master" || branchName=~/^[0-9]+.[0-9]+.[0-9]+-RC$/ ) {
-     // notify Slack
-   		println "send to product"
-     }else{
-   		println "send to devops"
-     }
+   if (currentBuild.currentResult == 'UNSTABLE') {
+                currentBuild.result = "UNSTABLE"
+            } else {
+                currentBuild.result = "SUCCESS"
+            }
+            step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'grafana'])
+    } catch (Exception e) {
+        currentBuild.result = "FAILURE"
+        step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'grafana'])
+    }
 }
