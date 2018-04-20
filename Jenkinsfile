@@ -18,9 +18,9 @@ node {
             } else {
                 currentBuild.result = "SUCCESS"
             }
-            step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'grafana'])
+            step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, customProjectName: "${JOB_NAME}", target: 'grafana'])
     } catch (Exception e) {
         currentBuild.result = "FAILURE"
-        step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'grafana'])
+        step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, customProjectName: "${JOB_NAME}", target: 'grafana'])
     }
 }
